@@ -1,30 +1,32 @@
+
+ 
+
 let Questions = [
     //question 1
-    {
+      {
         numb:1,
         question:"What Does HTML Stand For?",
         answer:"Hyper Text Markup Language",
         options:[
-            "Hyper Text Multi Language",
-            "Hyper Text Multipule Language",
-            "Hyper Text Markup Language",
-            "Hyper Text Makeup Language"
+                "Hyper Text Markup Language",
+                "Hyper Text Makeup Language",
+                "Hyper Text Mokeup Language",
+                "Hexa Transform Move Length"
         ]
-    },
- //question 2
-    {
+      },
+      //question 2
+      {
         numb:2,
         question:"What Does CSS Stand For?",
-        answer:"Cascading style Sheet",
+        answer:"Cascading Style Sheet",
         options:[
-            "Common Style Sheet",
-            "Colorfull style Sheet",
-            "Cascading style Sheet",
-            "Computer style Sheet"
+                "Cascading Style Sheet",
+                "Computer Style Sheet",
+                "Common Style Sheet",
+                "Colorfull style Sheet",
         ]
-    },
-     //question 3
-
+      },
+      //question 3
      {
         numb:3,
         question:"What Does PHP Stand For?",
@@ -59,6 +61,17 @@ let Questions = [
         "Expensive Markup Language",
         "Extensible Makeup Language"
     ]
-}
-    
+   },
+   //question 6
+   {
+        numb:6,
+        question:"What Does MERN Stand For?",
+        answer:"Node Express React MongoDb",
+        options:[
+               "Note Extend React MongoDb",
+               "Node Express React MongoDb",
+               "Node Explict React MongoDb",
+               "Nodes Express React MongoDb"
+        ]
+   }
 ]
