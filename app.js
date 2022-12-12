@@ -30,18 +30,14 @@ continueButton.addEventListener("click",function(){
 const showQuestions = (index)=>{
 
      let mainQuestion = document.querySelector(".text");
-     let quizOptions = document.querySelector(".options");
+     let quizOptions = document.querySelector(".MyOptions");
 
      mainQuestion.innerHTML = `<span>${Questions[index].numb}. ${Questions[index].question}</span>`;
-     
-     // for(let i = 0; i <=Questions[index].options.length-1 ; i++){
+ 
+ 
+       let optionTag =  `<div class="options">${Questions[0].options[1]}</div>`;
+                          
 
-                
-     //           let optionTag = `<span>${Questions[i].options[i]}</span>`;
-     //           quizOptions.innerHTML = optionTag;
-     // }
-
-       let optionTag = `<span>${Questions[0].options[0]}</span>`;
        quizOptions.innerHTML = optionTag;
 
 
