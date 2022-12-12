@@ -35,7 +35,7 @@ const showQuestions = (index)=>{
      mainQuestion.innerHTML = `<span>${Questions[index].numb}. ${Questions[index].question}</span>`;
  
  
-       let optionTag =  `<div class="options">${Questions[0].options[1]}</div>`;
+       let optionTag =  `<div class="options">${Questions[index].options[1]}</div>`;
                           
 
        quizOptions.innerHTML = optionTag;
