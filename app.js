@@ -67,11 +67,19 @@ const showQuestions = (index)=>{
        for(let i = 0; i < selectOptions.length; i++){
                 selectOptions[i].addEventListener("click",function(){
                            if(this.innerText == Questions[index].answer){
-                                alert("correct answer");
+                                  this.classList.add("correct");       
                            }else{
-                                alert("wrong answer");
+                              //     this.classList.add("correct");
+                                  this.classList.add("incorrect"); 
                            }
+
+                           for(let j = 0; j <selectOptions.length; j++){
+                                  console.log(selectOptions[j])
+                                  selectOptions[j].style.pointerEvents = "none";
+                           }
+       
                 })
+                
        }
 
 
