@@ -31,13 +31,20 @@ const showQuestions = (index)=>{
 
      let mainQuestion = document.querySelector(".text");
      let quizOptions = document.querySelector(".MyOptions");
+     let totalQue =  document.querySelector(".total_que");
 
      mainQuestion.innerHTML = `<span>${Questions[index].numb}. ${Questions[index].question}</span>`;
  
  
-       let optionTag =  `<div class="options">${Questions[index].options[1]}</div>`;
-                          
+     
+      let optionTag  =  `<div class="options">${Questions[index].options[0]}</div> 
+                        <div class="options">${Questions[index].options[1]}</div>
+                        <div class="options">${Questions[index].options[2]}</div>
+                        <div class="options">${Questions[index].options[3]}</div>`;
 
+
+
+                                      
        quizOptions.innerHTML = optionTag;
 
 
