@@ -99,7 +99,7 @@ let tickIcon ='<div class="tick icon"><i class="fas fa-check"></i></div>';
 let crossIcon =' <div class="cross icon"><i class="fas fa-times"></i></div>';
 
 function optionSelected(answer){
-      //  console.log(answer); 
+        console.log(answer); 
       clearInterval(counter);
       clearInterval(counterLine);
        let userAnswer = answer.innerText;
