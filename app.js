@@ -10,6 +10,8 @@ const questions = document.querySelector(".Questions");
 const nextBtn = document.querySelector(".nextBtn");
 
 let count = 0;
+const tickIcon  = `<div class="tick icon"><i class="fas fa-check"></i></div>`;
+const corssIcon = `<div class="cross icon"><i class="fas fa-times"></i></div>`;
 
 
 startQuiz.addEventListener("click",function(){
@@ -26,7 +28,7 @@ exitButton.addEventListener("click",function(){
 continueButton.addEventListener("click",function(){
      rulesBox.classList.remove("activeInfo");
      questions.classList.add("activeQuiz");
-     nextBtn.style.display = "block";
+     nextBtn.style.display = "none";
 
      showQuestions(0);
 });
@@ -40,6 +42,7 @@ nextBtn.addEventListener("click",function(){
            }else{
                alert("you have completed your exam")
            }
+           this.style.display = "none";
 });
 
 const showQuestions = (index)=>{
@@ -69,14 +72,21 @@ const showQuestions = (index)=>{
                            if(this.innerText == Questions[index].answer){
                                   this.classList.add("correct");       
                            }else{
-                              //     this.classList.add("correct");
-                                  this.classList.add("incorrect"); 
+                                  this.classList.add("incorrect");
+                                  for(let z = 0; z <selectOptions.length;z++){
+                                        if(selectOptions[z].innerText == Questions[index].answer){
+                                            selectOptions[z].setAttribute("class","options correct");  
+                                            selectOptions[z].insertAdjacentHTML("beforeend",tickIcon)
+                                        }
+                                       
+                                  } 
                            }
 
                            for(let j = 0; j <selectOptions.length; j++){
-                                  console.log(selectOptions[j])
+                              //     console.log(selectOptions[j])
                                   selectOptions[j].style.pointerEvents = "none";
                            }
+                           nextBtn.style.display = "block";
        
                 })
                 
