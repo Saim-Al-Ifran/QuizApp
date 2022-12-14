@@ -76,9 +76,9 @@ const showQuestions = (index)=>{
                                   for(let z = 0; z <selectOptions.length;z++){
                                         if(selectOptions[z].innerText == Questions[index].answer){
                                             selectOptions[z].setAttribute("class","options correct");  
-                                            selectOptions[z].insertAdjacentHTML("beforeend",tickIcon)
+                                            
                                         }
-                                       
+                                        selectOptions[z].insertAdjacentHTML("beforeend",tickIcon);
                                   } 
                            }
 
