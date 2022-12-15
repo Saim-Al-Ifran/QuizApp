@@ -99,7 +99,7 @@ const showQuestions = (index)=>{
                            }
                            nextBtn.style.display = "block";
                             
-                           clearInterval(countTimer);
+                           
 
        
                 })
