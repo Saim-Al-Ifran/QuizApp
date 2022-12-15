@@ -69,17 +69,22 @@ const showQuestions = (index)=>{
 
        for(let i = 0; i < selectOptions.length; i++){
                 selectOptions[i].addEventListener("click",function(){
+                             
                            if(this.innerText == Questions[index].answer){
-                                  this.classList.add("correct");       
+                                  this.classList.add("correct");  
+                                  selectOptions[i].insertAdjacentHTML("beforeend",tickIcon);     
                            }else{
                                   this.classList.add("incorrect");
                                   for(let z = 0; z <selectOptions.length;z++){
+                                    
                                         if(selectOptions[z].innerText == Questions[index].answer){
                                             selectOptions[z].setAttribute("class","options correct");  
-                                            
+                                            selectOptions[z].insertAdjacentHTML("beforeend",tickIcon);
                                         }
-                                        selectOptions[z].insertAdjacentHTML("beforeend",tickIcon);
+                                        
                                   } 
+                                  selectOptions[i].insertAdjacentHTML("beforeend",corssIcon);
+                                  
                            }
 
                            for(let j = 0; j <selectOptions.length; j++){
@@ -87,6 +92,7 @@ const showQuestions = (index)=>{
                                   selectOptions[j].style.pointerEvents = "none";
                            }
                            nextBtn.style.display = "block";
+
        
                 })
                 

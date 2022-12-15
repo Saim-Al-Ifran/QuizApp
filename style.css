@@ -351,3 +351,11 @@ footer button:hover{
     transform: translate(-50%,-50%) scale(1);
     pointer-events: auto;
 }
+
+.tick.icon i {
+    color: #2b9730;
+}
+
+.cross.icon i {
+    color: #cf0000;
+}
