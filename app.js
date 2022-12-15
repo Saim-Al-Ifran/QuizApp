@@ -34,13 +34,8 @@ continueButton.addEventListener("click",function(){
      nextBtn.style.display = "none";
      showQuestions(0);
 
-     setInterval(() => {
-        // console.log(timeCount--);
-        if(timeCount >= 0){
-        document.querySelector(".Seconds").innerText =  timeCount--;
-        } 
-        
-}, 1000);
+     startTimer(timeCount);
+
 
 });
 
@@ -103,6 +98,8 @@ const showQuestions = (index)=>{
                                   selectOptions[j].style.pointerEvents = "none";
                            }
                            nextBtn.style.display = "block";
+                            
+                           clearInterval(countTimer);
 
        
                 })
@@ -114,4 +111,18 @@ const showQuestions = (index)=>{
 }
 
 
- 
+ function startTimer(time){
+        let countTimer = setInterval(timer,1000);
+        function timer(){
+                document.querySelector(".Seconds").innerText = time;
+                time--;
+                if(time < 9){
+                      let addZero = document.querySelector(".Seconds").innerText;
+                       document.querySelector(".Seconds").innerText = 0 + addZero;
+                }
+                if(time < 0){
+                    clearInterval(countTimer);
+                    document.querySelector(".Seconds").innerText = "00";
+                }
+        }
+ }
