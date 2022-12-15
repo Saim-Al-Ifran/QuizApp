@@ -10,6 +10,9 @@ const questions = document.querySelector(".Questions");
 const nextBtn = document.querySelector(".nextBtn");
 
 let count = 0;
+let countTimer ;
+let animationCounter;
+let widthLine = 22;
 const tickIcon  = `<div class="tick icon"><i class="fas fa-check"></i></div>`;
 const corssIcon = `<div class="cross icon"><i class="fas fa-times"></i></div>`;
 let timeCount = 15;
@@ -35,7 +38,7 @@ continueButton.addEventListener("click",function(){
      showQuestions(0);
 
      startTimer(timeCount);
-
+     timerAnimation(widthLine);
 
 });
 
@@ -49,6 +52,9 @@ nextBtn.addEventListener("click",function(){
                alert("you have completed your exam")
            }
            this.style.display = "none";
+           startTimer(timeCount);
+           
+
 });
 
 const showQuestions = (index)=>{
@@ -98,7 +104,7 @@ const showQuestions = (index)=>{
                                   selectOptions[j].style.pointerEvents = "none";
                            }
                            nextBtn.style.display = "block";
-                            
+                           clearInterval(countTimer) 
                            
 
        
@@ -112,7 +118,7 @@ const showQuestions = (index)=>{
 
 
  function startTimer(time){
-        let countTimer = setInterval(timer,1000);
+         countTimer = setInterval(timer,1000);
         function timer(){
                 document.querySelector(".Seconds").innerText = time;
                 time--;
@@ -126,3 +132,14 @@ const showQuestions = (index)=>{
                 }
         }
  }
+
+function timerAnimation(width){
+       animationCounter = setInterval(timer,1000);
+
+       function timer(){
+               console.log(widthLine += width + "px");
+               if(widthLine > 319){
+                       clearInterval(animationCounter);
+               }
+       }
+}
