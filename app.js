@@ -12,6 +12,9 @@ const nextBtn = document.querySelector(".nextBtn");
 let count = 0;
 const tickIcon  = `<div class="tick icon"><i class="fas fa-check"></i></div>`;
 const corssIcon = `<div class="cross icon"><i class="fas fa-times"></i></div>`;
+let timeCount = 15;
+
+
 
 
 startQuiz.addEventListener("click",function(){
@@ -29,8 +32,16 @@ continueButton.addEventListener("click",function(){
      rulesBox.classList.remove("activeInfo");
      questions.classList.add("activeQuiz");
      nextBtn.style.display = "none";
-
      showQuestions(0);
+
+     setInterval(() => {
+        // console.log(timeCount--);
+        if(timeCount >= 0){
+        document.querySelector(".Seconds").innerText =  timeCount--;
+        } 
+        
+}, 1000);
+
 });
 
 
@@ -88,7 +99,7 @@ const showQuestions = (index)=>{
                            }
 
                            for(let j = 0; j <selectOptions.length; j++){
-                              //     console.log(selectOptions[j])
+                              
                                   selectOptions[j].style.pointerEvents = "none";
                            }
                            nextBtn.style.display = "block";
