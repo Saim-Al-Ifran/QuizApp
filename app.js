@@ -1,6 +1,4 @@
 
-
-
 const startQuiz = document.querySelector(".MyBtn");
 const myQuizApp = document.querySelector(".MyQuizApp");
 const rulesBox = document.querySelector(".RulesBox");
@@ -8,11 +6,17 @@ const exitButton = document.querySelector(".ExitButton");
 const continueButton = document.querySelector(".continueButton");
 const questions = document.querySelector(".Questions");
 const nextBtn = document.querySelector(".nextBtn");
+let timeLine = document.querySelector(".time_lines");
+let exitQuiz = document.querySelector(".quit");
 
 let count = 0;
 const tickIcon  = `<div class="tick icon"><i class="fas fa-check"></i></div>`;
 const corssIcon = `<div class="cross icon"><i class="fas fa-times"></i></div>`;
 let timeCount = 15;
+let countTimer;
+let widthValue = 0;
+let animationTimer;
+let userScore = 0;
 
 
 
@@ -33,23 +37,65 @@ continueButton.addEventListener("click",function(){
      questions.classList.add("activeQuiz");
      nextBtn.style.display = "none";
      showQuestions(0);
-
      startTimer(timeCount);
+     lineAnimtion(widthValue);
+  
 
 
 });
+
 
 
 nextBtn.addEventListener("click",function(){
-           count += 1;
-         
-           if(count < 6){
+            count++;
+           if(count < Questions.length){     
                showQuestions(count);
            }else{
-               alert("you have completed your exam")
+                showResultBox()
+
            }
            this.style.display = "none";
+            
+           startTimer(timeCount);
+
+
+           lineAnimtion(widthValue);
+        
+           
+        
 });
+
+exitQuiz.addEventListener("click",function(){
+       window.location.reload()
+});
+
+
+function showResultBox(){
+
+
+       rulesBox.classList.remove("activeInfo");
+       document.querySelector(".Questions").classList.remove("activeQuiz");
+       document.querySelector(".result_box").classList.add("activeResult");
+  
+       const scoreText = document.querySelector(".score_text");
+  
+       if(userScore >= 1 && userScore < 3 ){
+           const scoreTag = `<span>Carry On👍 You Got <p>${userScore}</p> Out Of ${Questions.length}</span>`;
+           scoreText.innerHTML = scoreTag;
+       }else if(userScore >= 3 && userScore < 5){
+            const scoreTag = `<span>Congratulations😍 You Got <p>${userScore}</p> Out Of ${Questions.length}</span>`;
+            scoreText.innerHTML = scoreTag;
+       }else if(userScore >= 5){
+              const scoreTag = `<span>Hurrayy!!!😍 You Got <p>${userScore}</p> Out Of ${Questions.length}</span>`;
+              scoreText.innerHTML = scoreTag;
+        }else{
+            const scoreTag = `<span>You failed bitch😂😂 You Got <p>${userScore}</p> Out Of ${Questions.length}</span>`;
+            scoreText.innerHTML = scoreTag;
+       }
+
+}
+
+ 
 
 const showQuestions = (index)=>{
 
@@ -77,6 +123,8 @@ const showQuestions = (index)=>{
                 selectOptions[i].addEventListener("click",function(){
                              
                            if(this.innerText == Questions[index].answer){
+                                  userScore += 1;
+                                  console.log(userScore)
                                   this.classList.add("correct");  
                                   selectOptions[i].insertAdjacentHTML("beforeend",tickIcon);     
                            }else{
@@ -98,7 +146,8 @@ const showQuestions = (index)=>{
                                   selectOptions[j].style.pointerEvents = "none";
                            }
                            nextBtn.style.display = "block";
-                           
+                           clearInterval(countTimer);
+                           clearInterval(animationTimer);                           
 
        
                 })
@@ -111,7 +160,7 @@ const showQuestions = (index)=>{
 
 
  function startTimer(time){
-        let countTimer = setInterval(timer,1000);
+          countTimer = setInterval(timer,1000);
         function timer(){
                 document.querySelector(".Seconds").innerText = time;
                 time--;
@@ -125,3 +174,16 @@ const showQuestions = (index)=>{
                 }
         }
  }
+
+ function lineAnimtion(time){
+       animationTimer = setInterval(timer,50);
+       function timer(){
+               time += 1;
+                timeLine.style.width = time + "px";
+               if(time == 320){
+                      clearInterval(animationTimer)
+               }
+       }
+ }
+
+ console.log(userScore)
