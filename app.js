@@ -186,4 +186,4 @@ const showQuestions = (index)=>{
        }
  }
 
- console.log(userScore)
+ 
